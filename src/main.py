@@ -1,47 +1,61 @@
-# simple_calculator_week1.py
+def get_numbers():
+    """
+    ใช้รับค่าพารามิเตอร์ 2 ตัว ตรวจสอบว่าเป็นตัวเลข และคืนค่ากลับไปเป็นตัวเลข 2 ตัว
+    """
+    while True:
+        try:
+            num1_str = input("Enter the first number: ")
+            num1 = float(num1_str)
+            break
+        except ValueError:
+            print(f"Invalid input: '{num1_str}' is not a valid number. Please try again.")
 
-def main():
-    """
-    Main function for the Simple Calculator Week 1.
-    Handles the main loop, 'quit' command, and simple addition.
-    """
-    print("Welcome to Simple Calculator!") # Display a welcome message
+    while True:
+        try:
+            num2_str = input("Enter the second number: ")
+            num2 = float(num2_str)
+            break
+        except ValueError:
+            print(f"Invalid input: '{num2_str}' is not a valid number. Please try again.")
 
-    while True:
-        # Prompt the user for a command and convert it to lowercase
-        # for case-insensitive command recognition (e.g., 'Quit' works like 'quit').
-        command = input("\nChoose an option: add, quit\n> ").lower()
+    return num1, num2
 
-        if command == 'quit':
-            print("Goodbye!")
-            # Exit the program loop as requested by the 'quit' command.
-            break
-        elif command == 'add':
-            # This block handles the addition operation.
-            # It prompts the user for two numbers.
-            num1_str = input("Enter the first number: ")
-            num2_str = input("Enter the second number: ")
+def add_numbers():
+    """ฟังก์ชันการบวก"""
+    numbers = get_numbers()
+    if numbers:
+        num1, num2 = numbers
+        result = num1 + num2
+        print(f"The sum of {num1} and {num2} is: {result}")
 
-            # Convert the input strings to floating-point numbers.
-            # NOTE for Debugger (Four):
-            # As per Week 1 plan, the Coder's task is to convert inputs to numbers.
-            # The Debugger (Four) is responsible for testing edge cases like non-numeric input.
-            # If a user enters text instead of numbers (e.g., "hello"),
-            # this conversion will raise a ValueError, causing the program to crash.
-            # This crash is an expected "Whoops!" moment for the Debugger to identify
-            # and report for future improvements (e.g., adding try-except blocks in later sprints).
-            num1 = float(num1_str)
-            num2 = float(num2_str)
+def subtract_numbers():
+    """ฟังก์ชันการลบ"""
+    numbers = get_numbers()
+    if numbers:
+        num1, num2 = numbers
+        result = num1 - num2
+        print(f"The difference between {num1} and {num2} is: {result}")
 
-            # Perform the addition operation.
-            result = num1 + num2
+# โปรแกรมหลัก
+def main():
+    print("Welcome to the Simple CLI Calculator!")
+    print("Available commands: add, subtract, quit")
 
-            # Display the result to the user clearly.
-            print(f"Result: {num1} + {num2} = {result}")
-        else:
-            # Inform the user if an invalid command is entered.
-            print("Invalid command. Please try again.")
+  """ทำงานเมื่อเป็นจริงเสมอ"""
+    while True:
+        command = input("\nEnter a command: ").lower().strip() # .strip() removes leading/trailing whitespace
 
-# This ensures that the 'main()' function is called only when the script is executed directly.
-if __name__ == "__main__":
-    main()
+        if command == 'quit':
+            print("Exiting calculator. Goodbye!")
+            break
+          # หยุดการทำงาน
+        elif command == 'add':
+            add_numbers()
+        elif command == 'subtract':
+            subtract_numbers()
+        else:
+            print("Invalid command. Please choose from 'add', 'subtract', or 'quit'.")
+
+if __name__ == "__main__":
+    main()
+
