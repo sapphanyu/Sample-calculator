@@ -28,17 +28,17 @@ def get_numbers_and_operator():
 def add_numbers(num1, num2):
     """Performs addition of two numbers."""
     result = num1 + num2
-    print(f"The result of {num1} + {num2} is: {result}")
+    return result
 
 def subtract_numbers(num1, num2):
     """Performs subtraction of two numbers."""
     result = num1 - num2
-    print(f"The result of {num1} - num2 is: {result}")
+    return result
 
 def multiply_numbers(num1, num2):
     """Performs multiplication of two numbers."""
     result = num1 * num2
-    print(f"The result of {num1} * {num2} is: {result}")
+    return result
 
 def divide_numbers(num1, num2):
     """Performs division of two numbers."""
@@ -47,12 +47,12 @@ def divide_numbers(num1, num2):
         return
     else:
         result = num1 / num2
-        print(f"The result of {num1} / {num2} is: {result}")
+        return result
 
 def power_numbers(num1, num2):
     """Performs exponentiation of two numbers."""
     result = num1 ** num2
-    print(f"The result of {num1} ** {num2} is: {result}")
+    return result
 
 
 # Main program loop
@@ -72,15 +72,21 @@ def main():
             if calculation_parts:
                 num1, num2, operator = calculation_parts
                 if operator == '+':
-                    add_numbers(num1, num2)
+                    result = add_numbers(num1, num2)
                 elif operator == '-':
-                    subtract_numbers(num1, num2)
+                    result = subtract_numbers(num1, num2)
                 elif operator == '*':
-                    multiply_numbers(num1, num2)
+                    result = multiply_numbers(num1, num2)
                 elif operator == '/':
-                    divide_numbers(num1, num2)
+                    result = divide_numbers(num1, num2)
+                    if result is None:
+                        continue  # ข้ามไปเริ่มรอบใหม่
+                    
                 elif operator == '**':
-                    power_numbers(num1, num2)
+                    result = power_numbers(num1, num2)
+            print(f"The result of {num1} {operator} {num2} is: {result}")
+
+
         else:
             print("Invalid command. Please enter 'calculate' or 'quit'.")
 
