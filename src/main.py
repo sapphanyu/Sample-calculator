@@ -55,19 +55,21 @@ def power_numbers(num1, num2):
     return result
 
 
+history = [] #ลิสต์เก็บประวัติการคำนวณ
+
 # Main program loop
 def main():
     print("Welcome to the Simple CLI Calculator!")
-    print("Available commands: quit, or enter 'calculate' to perform a calculation")
+    print("Available commands: calculate , quit , history , clear history")
     print("Supported operators: +, -, *, /, **")
 
-    while True:
+    while True: # เริ่มลูปหลักของโปรแกรม
         user_command = input("\nEnter a command (calculate or quit): ").lower().strip()
 
-        if user_command == 'quit':
+        if user_command == 'quit':# ออกจากโปรแกรม
             print("Exiting calculator. Goodbye!")
             break
-        elif user_command == 'calculate':
+        elif user_command == 'calculate': # เริ่มการคำนวณ
             calculation_parts = get_numbers_and_operator()
             if calculation_parts:
                 num1, num2, operator = calculation_parts
@@ -86,9 +88,25 @@ def main():
                     result = power_numbers(num1, num2)
             print(f"The result of {num1} {operator} {num2} is: {result}")
 
+            # บันทึกประวัติการคำนวณ
+            history.append((num1, num2, operator, result))
+
+        elif user_command == 'history': # แสดงประวัติการคำนวณ
+            if not history:
+                print("No calculations yet.")
+            else:
+                print("Calculation history:")
+                for entry in history:
+                    print(f"{entry[0]} {entry[2]} {entry[1]} = {entry[3]}")
+
+        elif user_command == 'clear history': # ล้างประวัติการคำนวณ
+            history.clear()
+            print("Calculation history cleared.")
+
+            
 
         else:
-            print("Invalid command. Please enter 'calculate' or 'quit'.")
+            print("Invalid command. Please enter 'calculate', 'history', 'clear history', or 'quit'.")
 
 
 if __name__ == "__main__":
