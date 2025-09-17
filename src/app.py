@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import json
 import os
+import main  # import ฟังก์ชันคำนวณจาก main.py
 
 app = Flask(__name__)
 
@@ -25,8 +26,8 @@ def save_history(history):
 @app.route("/calculate", methods=["POST"])
 def calculate():
     data = request.get_json()
-    num1 = data.get("num1")
-    num2 = data.get("num2")
+    num1 = float(data.get("num1"))
+    num2 = float(data.get("num2"))
     operator = data.get("operator")
 
     if operator not in ["+", "-", "*", "/", "**"]:
@@ -34,17 +35,17 @@ def calculate():
 
     try:
         if operator == "+":
-            result = num1 + num2
+            result = main.add_numbers(num1, num2)
         elif operator == "-":
-            result = num1 - num2
+            result = main.subtract_numbers(num1, num2)
         elif operator == "*":
-            result = num1 * num2
+            result = main.multiply_numbers(num1, num2)
         elif operator == "/":
-            if num2 == 0:
+            result = main.divide_numbers(num1, num2)
+            if result is None:
                 return jsonify({"error": "Division by zero"}), 400
-            result = num1 / num2
         elif operator == "**":
-            result = num1 ** num2
+            result = main.power_numbers(num1, num2)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
