@@ -8,9 +8,13 @@
   
   src
     |-main.py (ไฟล์โปรแกรมหลัก)
+    
   Planning_week 1.md (แผนการสัปดาห์ที่ 1)
+  
   Planning_week 2.md (แผนการสัปดาห์ที่ 2)
+  
   Planning_week 3.md (แผนการสัปดาห์ที่ 3)
+  
   README.md
 # สรุปความคืบหน้า
 ** week 1 **
