@@ -1,3 +1,18 @@
+import json # For handling JSON file operations
+import os # For checking file existence
+
+HISTORY_FILE = "history.json" # File to store calculation history   
+
+def load_history(): #โหลดประวัติการคำนวณจากไฟล์ JSON
+    """Loads calculation history from a JSON file."""
+    if os.path.exists(HISTORY_FILE): #ถ้าไฟล์มีอยู่
+        with open(HISTORY_FILE, 'r') as file: #เปิดไฟล์ในโหมดอ่าน
+            try:       #พยายามโหลดข้อมูลจากไฟล์
+                return json.load(file)
+            except json.JSONDecodeError: #ถ้าไฟล์ว่างหรือข้อมูลไม่ถูกต้อง
+                return []
+    return [] #ถ้าไฟล์ไม่มีอยู่ ให้คืนค่าเป็นลิสต์ว่าง
+
 def get_numbers_and_operator():
     """
     Prompts the user to enter two numbers and an operator in (num1 x num2) format.
@@ -56,6 +71,7 @@ def power_numbers(num1, num2):
 
 
 history = [] #ลิสต์เก็บประวัติการคำนวณ
+history = load_history() #โหลดประวัติการคำนวณจากไฟล์ JSON
 
 # Main program loop
 def main():
@@ -82,14 +98,19 @@ def main():
                 elif operator == '/':
                     result = divide_numbers(num1, num2)
                     if result is None:
-                        continue  # ข้ามไปเริ่มรอบใหม่
-                    
+                        continue  # ข้ามไปเริ่มรอบใหม่           
                 elif operator == '**':
                     result = power_numbers(num1, num2)
-            print(f"The result of {num1} {operator} {num2} is: {result}")
+            if result is not None:
+                print(f"The result of {num1} {operator} {num2} is: {result}")
+
 
             # บันทึกประวัติการคำนวณ
-            history.append((num1, num2, operator, result))
+            record = {"num1": num1,"num2": num2,"operator": operator,"result": result} #สร้างเรคคอร์ดการคำนวณ
+            
+            history.append(record)
+            with open(HISTORY_FILE, 'w') as file: #เปิดไฟล์ในโหมดเขียน
+                json.dump(history, file, indent=2) #บันทึกประวัติการคำนวณลงในไฟล์ JSON
 
         elif user_command == 'history': # แสดงประวัติการคำนวณ
             if not history:
@@ -97,11 +118,14 @@ def main():
             else:
                 print("Calculation history:")
                 for entry in history:
-                    print(f"{entry[0]} {entry[2]} {entry[1]} = {entry[3]}")
+                    print(f"{entry['num1']} {entry['operator']} {entry['num2']} = {entry['result']}")
 
         elif user_command == 'clear history': # ล้างประวัติการคำนวณ
             history.clear()
             print("Calculation history cleared.")
+            if os.path.exists(HISTORY_FILE):
+                os.remove(HISTORY_FILE)
+                print("History file deleted.")
 
             
 
