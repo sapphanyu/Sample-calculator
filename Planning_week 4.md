@@ -11,3 +11,18 @@
 5.(ยาก?) ทำ web gui/mobile gui(เลือกแบบไหนก็ได้ ***อาจารคาดหวังทำเป็น web gui) 
 
 6.ทำdocker_file
+
+#ผลการทำงาน
+- เปลี่ยนทุกการprintในฟังก์ชันเป็นการคืนค่าแล้วprintออกมาครั้งเดียวแล้ว
+
+- ทำระบบประวัติและบันทึกลงในไฟล์่json เรียบร้อย
+  
+Flow ของโปรแกรมตอนนี้
+
+ตอนเริ่ม → เรียก load_history() → ถ้ามีไฟล์ history.json อยู่ใน src/ ก็จะโหลดมาเก็บในตัวแปร history
+
+ตอนคำนวณเสร็จ → สร้าง record ใหม่ {num1, num2, operator, result} → append เข้า history → เขียนทับลงไฟล์ src/history.json
+
+ตอนสั่ง history → อ่านจากตัวแปร history ใน memory มา print ออก
+
+ตอนสั่ง clear history → เคลียร์ list และลบไฟล์ src/history.json ทิ้ง
