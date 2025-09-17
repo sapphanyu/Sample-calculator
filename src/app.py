@@ -1,10 +1,10 @@
-from flask import Flask, request, jsonify
 import json
 import os
 import main  # import ฟังก์ชันคำนวณจาก main.py
 
 app = Flask(__name__)
 
+# กำหนดเส้นทางไฟล์ประวัติ
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 HISTORY_FILE = os.path.join(BASE_DIR, "history.json")
 
