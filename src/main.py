@@ -1,7 +1,10 @@
 import json # For handling JSON file operations
 import os # For checking file existence
 
-HISTORY_FILE = "history.json" # File to store calculation history   
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # path ของ main.py
+HISTORY_FILE = os.path.join(BASE_DIR, "history.json")  # เซฟใน src เดียวกัน
+
+#HISTORY_FILE = "history.json" # File to store calculation history   
 
 def load_history(): #โหลดประวัติการคำนวณจากไฟล์ JSON
     """Loads calculation history from a JSON file."""
@@ -80,7 +83,7 @@ def main():
     print("Supported operators: +, -, *, /, **")
 
     while True: # เริ่มลูปหลักของโปรแกรม
-        user_command = input("\nEnter a command (calculate or quit): ").lower().strip()
+        user_command = input("\nEnter a command (calculate , quit , history , clear history): ").lower().strip()
 
         if user_command == 'quit':# ออกจากโปรแกรม
             print("Exiting calculator. Goodbye!")
