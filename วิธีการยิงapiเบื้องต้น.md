@@ -1,4 +1,5 @@
 1.รันไฟล์ app.py ใน vs code
+
 2.ต้องรันคำสั่งใน gitbash เพื่อความชัวร์ในการรันคำสั่ง ยิง api
 
 # เรียก API /calculate (POST)
