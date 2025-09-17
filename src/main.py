@@ -120,8 +120,8 @@ def main():
                 print("No calculations yet.")
             else:
                 print("Calculation history:")
-                for entry in history:
-                    print(f"{entry['num1']} {entry['operator']} {entry['num2']} = {entry['result']}")
+                for i, entry in enumerate(history, start=1):
+                    print(f"{i}. {entry['num1']} {entry['operator']} {entry['num2']} = {entry['result']}")
 
         elif user_command == 'clear history': # ล้างประวัติการคำนวณ
             history.clear()

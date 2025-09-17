@@ -4,5 +4,17 @@
     "num2": 33.0,
     "operator": "+",
     "result": 110.0
+  },
+  {
+    "num1": 5,
+    "num2": 3,
+    "operator": "+",
+    "result": 8
+  },
+  {
+    "num1": 5,
+    "num2": 3,
+    "operator": "+",
+    "result": 8
   }
 ]
