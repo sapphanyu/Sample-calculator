@@ -4,5 +4,11 @@
     "num2": 3.0,
     "operator": "+",
     "result": 8.0
+  },
+  {
+    "num1": 3.0,
+    "num2": 8.0,
+    "operator": "+",
+    "result": 11.0
   }
 ]
