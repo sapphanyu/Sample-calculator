@@ -42,6 +42,26 @@ def get_numbers_and_operator():
         except ValueError:
             print("Invalid number input. Please enter valid numbers.")
 
+def get_numbers_and_operator_butnoprint():
+    while True:
+        num_string = input().strip()
+        parts = num_string.split()
+
+        if len(parts) != 3:
+            return "Invalid format. Please use (num1 operator num2) format."
+
+        num1_str, operator, num2_str = parts
+
+        try:
+            num1 = float(num1_str)
+            num2 = float(num2_str)
+            if operator in ['+', '-', '*', '/', '**']:
+                return num1, num2, operator
+            else:
+                return f"Invalid operator: {operator}. Please choose from +, -, *, /, **."
+        except ValueError:
+            return "Invalid number input. Please enter valid numbers."
+
 
 def add_numbers(num1, num2):
     """Performs addition of two numbers."""

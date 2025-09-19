@@ -1,0 +1,14 @@
+{% extends "BarLayout.html" %}
+{% block content %}
+    <div class="container">
+        <h2>Calculator</h2>
+        <form action = "{{ url_for('calculate_numbers') }}" method = "POST">
+            <div class = "form-group">
+                <label for = "">กรอกโจทย์ เช่น 1 + 1:</label>
+                <input type = "text" class = "form-control" name = "numstring" required>
+            </div>
+            <br>
+            <button type = "submit" class = "btn btn-primary">คำนวณ</button>
+        </form>
+    </div>
+{% endblock %}

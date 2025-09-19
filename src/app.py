@@ -68,6 +68,11 @@ def clear_history():
     save_history([])
     return jsonify({"message": "History cleared."})
 
+#ต้องเขียนโค้ดคำนวณใหม่
+
+
+
+
 # หน้าเว็บ
 @app.route("/")
 def home_page():
@@ -81,6 +86,27 @@ def history_page():
 @app.route("/c")
 def calculator_page():
     return render_template("Calculate.html")
+
+@app.route("/result", methods=["POST"])
+def calculate_numbers():
+    calculation_parts = request.form.get("numstring")
+    calculation_parts = main.get_numbers_and_operator_butnoprint(calculation_parts)
+    if calculation_parts:
+                num1, num2, operator = calculation_parts
+                if operator == '+':
+                    result = main.add_numbers(num1, num2)
+                elif operator == '-':
+                    result = main.subtract_numbers(num1, num2)
+                elif operator == '*':
+                    result = main.multiply_numbers(num1, num2)
+                elif operator == '/':
+                    result = main.divide_numbers(num1, num2)
+                    if result is None:
+                        return "Cannot divide by zero!"
+                elif operator == '**':
+                    result = main.power_numbers(num1, num2)
+    if result is not None:
+                print(f"The result of {num1} {operator} {num2} is: {result}")
 
 if __name__ == "__main__":
     app.run(debug=True)
