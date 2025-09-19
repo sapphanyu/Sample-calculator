@@ -64,5 +64,11 @@
     "num2": 0.0,
     "operator": "**",
     "result": 1.0
+  },
+  {
+    "num1": 3.0,
+    "num2": 6.0,
+    "operator": "+",
+    "result": 9.0
   }
 ]
