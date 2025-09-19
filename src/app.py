@@ -24,7 +24,7 @@ def save_history(history):
     with open(HISTORY_FILE, "w") as file:
         json.dump(history, file, indent=2)
 
-@app.route("/calculate", methods=["POST"])
+@app.route("/CalculateTest", methods=["POST"])
 def calculate():
     data = request.get_json()
     num1 = float(data.get("num1"))
@@ -58,19 +58,28 @@ def calculate():
 
     return jsonify(record)
 
-@app.route("/history", methods=["GET"])
+@app.route("/historyTest", methods=["GET"])
 def get_history():
     history = load_history()
     return jsonify(history)
 
-@app.route("/history", methods=["DELETE"])
+@app.route("/historyTest", methods=["DELETE"])
 def clear_history():
     save_history([])
-    return jsonify({"message": "History cleared."}) 
+    return jsonify({"message": "History cleared."})
 
-@app.route("/templateBar")
-def index():
-    return render_template("/src/templateBar.html")
+# หน้าเว็บ
+@app.route("/")
+def home_page():
+    return render_template("Calculate.html")
+
+@app.route("/h")
+def history_page():
+    return render_template("History.html")
+
+@app.route("/c")
+def calculator_page():
+    return render_template("Calculate.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
