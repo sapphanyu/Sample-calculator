@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify,render_template
 import json
 import os
 import main  # import ฟังก์ชันคำนวณจาก main.py
@@ -66,7 +66,11 @@ def get_history():
 @app.route("/history", methods=["DELETE"])
 def clear_history():
     save_history([])
-    return jsonify({"message": "History cleared."})
+    return jsonify({"message": "History cleared."}) 
+
+@app.route("/templateBar")
+def index():
+    return render_template("/src/templateBar.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
