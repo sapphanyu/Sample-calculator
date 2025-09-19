@@ -4,10 +4,11 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
+COPY requirements.txt .
 # Copy your Python script and JSON file
-COPY . .
+RUN pip install --no-cache-dir -r requirements.txt
 
-RUN pip install flask
+COPY . .
 
 # Run your Python app
 CMD ["python", "app.py"]
