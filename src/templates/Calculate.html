@@ -1,21 +1,26 @@
 {% extends "BarLayout.html" %}
 {% block content %}
-    <div class="container">
-        <h2>Calculator</h2>
-        <form action = "{{ url_for('calculator_page') }}" method = "POST">
-            <div class = "form-group">
-                <label for = "">กรอกโจทย์ เช่น 1 + 1:</label>
-                <input type = "text" class = "form-control" name = "numstring" required>
-            </div>
-            <br>
-            <button type = "submit" class = "btn btn-primary">คำนวณ</button>
-        </form>
-
-        {% if result %}
-        <div class="alert alert-success mt-3">
-            ผลลัพธ์: {{ result }}
+<div class="container">
+    <h2>Calculator</h2>
+    <form action="{{ url_for('calculator_page') }}" method="POST">
+        <div class="form-group">
+            <label for="">กรอกโจทย์(รองรับเฉพาะ + - * / **) เช่น 1 + 1:</label>
+            <input type="text" class="form-control" name="numstring" required>
         </div>
-        {% endif %}
+        <br>
+        <button type="submit" class="btn btn-primary">คำนวณ</button>
+    </form>
 
+    {% if result is not none %}
+    <div class="alert alert-success mt-3">
+        ผลลัพธ์: {{ result }}
     </div>
+    {% endif %}
+
+    {% if error %}
+    <div class="alert alert-danger mt-3">
+        {{ error }}
+    </div>
+    {% endif %}
+</div>
 {% endblock %}

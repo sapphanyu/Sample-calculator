@@ -88,11 +88,14 @@ def history_page():
 @app.route("/c", methods=["GET", "POST"])
 def calculator_page():
     result = None
+    error = None  # เพิ่มตัวแปรเก็บ error
     if request.method == "POST":
-        calculation_parts = request.form.get("numstring")
-        calculation_parts = main.get_numbers_and_operator_butnoprint(calculation_parts)
+        calculation_input = request.form.get("numstring")
+        calculation_parts = main.get_numbers_and_operator_butnoprint(calculation_input)
 
-        if calculation_parts:
+        if isinstance(calculation_parts, str):  # เป็นข้อความ error
+            error = calculation_parts
+        else:
             num1, num2, operator = calculation_parts
             if operator == '+':
                 result = main.add_numbers(num1, num2)
@@ -103,18 +106,18 @@ def calculator_page():
             elif operator == '/':
                 result = main.divide_numbers(num1, num2)
                 if result is None:
-                    result = "Cannot divide by zero!"
+                    error = "Cannot divide by zero!"
             elif operator == '**':
                 result = main.power_numbers(num1, num2)
 
-            # บันทึก history
-            if isinstance(result, (int, float)):
+            # บันทึก history ถ้า result ถูกต้อง
+            if result is not None and error is None:
                 history = load_history()
                 record = {"num1": num1, "num2": num2, "operator": operator, "result": result}
                 history.append(record)
                 save_history(history)
 
-    return render_template("Calculate.html", result=result)
+    return render_template("Calculate.html", result=result, error=error)
 
 if __name__ == "__main__":
     app.run(debug=True)
