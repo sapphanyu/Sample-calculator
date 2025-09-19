@@ -1,3 +1,5 @@
+#app.py
+
 from flask import Flask, request, jsonify,render_template
 import json
 import os
@@ -76,37 +78,43 @@ def clear_history():
 # หน้าเว็บ
 @app.route("/")
 def home_page():
-    return render_template("BarLayout.html")
+    return render_template("Calculate.html")
 
 @app.route("/h")
 def history_page():
     history = load_history()
     return render_template("History.html", history=history)
 
-@app.route("/c")
+@app.route("/c", methods=["GET", "POST"])
 def calculator_page():
-    return render_template("Calculate.html")
+    result = None
+    if request.method == "POST":
+        calculation_parts = request.form.get("numstring")
+        calculation_parts = main.get_numbers_and_operator_butnoprint(calculation_parts)
 
-@app.route("/result", methods=["POST"])
-def calculate_numbers():
-    calculation_parts = request.form.get("numstring")
-    calculation_parts = main.get_numbers_and_operator_butnoprint(calculation_parts)
-    if calculation_parts:
-                num1, num2, operator = calculation_parts
-                if operator == '+':
-                    result = main.add_numbers(num1, num2)
-                elif operator == '-':
-                    result = main.subtract_numbers(num1, num2)
-                elif operator == '*':
-                    result = main.multiply_numbers(num1, num2)
-                elif operator == '/':
-                    result = main.divide_numbers(num1, num2)
-                    if result is None:
-                        return "Cannot divide by zero!"
-                elif operator == '**':
-                    result = main.power_numbers(num1, num2)
-    if result is not None:
-                print(f"The result of {num1} {operator} {num2} is: {result}")
+        if calculation_parts:
+            num1, num2, operator = calculation_parts
+            if operator == '+':
+                result = main.add_numbers(num1, num2)
+            elif operator == '-':
+                result = main.subtract_numbers(num1, num2)
+            elif operator == '*':
+                result = main.multiply_numbers(num1, num2)
+            elif operator == '/':
+                result = main.divide_numbers(num1, num2)
+                if result is None:
+                    result = "Cannot divide by zero!"
+            elif operator == '**':
+                result = main.power_numbers(num1, num2)
+
+            # บันทึก history
+            if isinstance(result, (int, float)):
+                history = load_history()
+                record = {"num1": num1, "num2": num2, "operator": operator, "result": result}
+                history.append(record)
+                save_history(history)
+
+    return render_template("Calculate.html", result=result)
 
 if __name__ == "__main__":
     app.run(debug=True)

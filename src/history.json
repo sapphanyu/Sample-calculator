@@ -10,5 +10,35 @@
     "num2": 8.0,
     "operator": "+",
     "result": 11.0
+  },
+  {
+    "num1": 6.0,
+    "num2": 6.0,
+    "operator": "+",
+    "result": 12.0
+  },
+  {
+    "num1": 9.0,
+    "num2": 4.0,
+    "operator": "+",
+    "result": 13.0
+  },
+  {
+    "num1": 9.0,
+    "num2": 5.0,
+    "operator": "**",
+    "result": 59049.0
+  },
+  {
+    "num1": 6.0,
+    "num2": 6.0,
+    "operator": "+",
+    "result": 12.0
+  },
+  {
+    "num1": 99.0,
+    "num2": 99.0,
+    "operator": "+",
+    "result": 198.0
   }
 ]
