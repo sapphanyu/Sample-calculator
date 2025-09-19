@@ -1,74 +1,8 @@
 [
   {
-    "num1": 5.0,
-    "num2": 3.0,
-    "operator": "+",
-    "result": 8.0
-  },
-  {
-    "num1": 3.0,
-    "num2": 8.0,
-    "operator": "+",
-    "result": 11.0
-  },
-  {
     "num1": 6.0,
-    "num2": 6.0,
+    "num2": 9.0,
     "operator": "+",
-    "result": 12.0
-  },
-  {
-    "num1": 9.0,
-    "num2": 4.0,
-    "operator": "+",
-    "result": 13.0
-  },
-  {
-    "num1": 9.0,
-    "num2": 5.0,
-    "operator": "**",
-    "result": 59049.0
-  },
-  {
-    "num1": 6.0,
-    "num2": 6.0,
-    "operator": "+",
-    "result": 12.0
-  },
-  {
-    "num1": 99.0,
-    "num2": 99.0,
-    "operator": "+",
-    "result": 198.0
-  },
-  {
-    "num1": 99.0,
-    "num2": -99.0,
-    "operator": "+",
-    "result": 0.0
-  },
-  {
-    "num1": -9.0,
-    "num2": 6.0,
-    "operator": "-",
-    "result": -15.0
-  },
-  {
-    "num1": 99.0,
-    "num2": 98.0,
-    "operator": "/",
-    "result": 1.010204081632653
-  },
-  {
-    "num1": 0.0,
-    "num2": 0.0,
-    "operator": "**",
-    "result": 1.0
-  },
-  {
-    "num1": 3.0,
-    "num2": 6.0,
-    "operator": "+",
-    "result": 9.0
+    "result": 15.0
   }
 ]
