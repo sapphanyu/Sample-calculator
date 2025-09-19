@@ -71,11 +71,12 @@ def clear_history():
 # หน้าเว็บ
 @app.route("/")
 def home_page():
-    return render_template("Calculate.html")
+    return render_template("BarLayout.html")
 
 @app.route("/h")
 def history_page():
-    return render_template("History.html")
+    history = load_history()
+    return render_template("History.html", history=history)
 
 @app.route("/c")
 def calculator_page():
