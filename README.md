@@ -192,12 +192,14 @@ Docker --> Run app.py --> Access via Browser --> Same Flow as Web
 * ประวัติการคำนวณเก็บใน `history.json`
 * หน้าเว็บใช้ Jinja2 templates:
 
-## 7. รัน Test case ด้วย Docker
+## รัน Test Case ด้วย Docker
+
+คุณสามารถใช้ Docker เพื่อรัน test ได้โดยไม่ต้องติดตั้ง Python หรือ library เพิ่มบนเครื่อง
 
 ```
-# 1. Build Docker image
-docker build -t test -f Dockerfile.test .
+# 1. สร้าง Docker image สำหรับการทดสอบ
+docker build -t calculator-test -f Dockerfile.test .
 
-# 2. Run tests inside container
-docker run test
+# 2. รัน test ภายใน container
+docker run --rm calculator-test
 ```
