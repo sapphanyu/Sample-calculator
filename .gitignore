@@ -1,0 +1,55 @@
+# --------------------------
+# Python
+# --------------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+*.db
+*.egg-info/
+*.egg
+*.log
+
+# --------------------------
+# Virtual Environment
+# --------------------------
+venv/
+env/
+ENV/
+.env
+
+# --------------------------
+# Flask / general
+# --------------------------
+instance/
+*.pyc
+*.pyo
+*.pyd
+
+# --------------------------
+# History file (optional)
+# --------------------------
+src/history.json
+
+# --------------------------
+# Docker
+# --------------------------
+*.dockerfile
+*.tar
+*.log
+docker-compose.override.yml
+
+# --------------------------
+# IDE / Editor
+# --------------------------
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# --------------------------
+# OS / system
+# --------------------------
+.DS_Store
+Thumbs.db

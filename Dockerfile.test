@@ -1,0 +1,15 @@
+# Base image
+FROM python:3.13-slim
+
+WORKDIR /app
+
+# Copy requirements and install pytest too
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt pytest
+
+# Copy source code + tests
+COPY src/ ./src
+COPY tests/ ./tests
+
+# Run all tests automatically
+CMD ["pytest", "-v", "tests/"]
