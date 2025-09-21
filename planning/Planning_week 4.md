@@ -12,6 +12,14 @@
 
 6. ทำdockerfile ✅
 
+7. ทำtest case, Auto test → Build → Deploy
+
+auto test → ตรวจสอบว่าโค้ดทำงานถูกต้อง ไม่มี bug
+
+build → สร้าง Docker image ของโปรเจกต์
+
+deploy → ส่ง Docker container ไป server หรือ cloud ให้ใช้งานจริง
+
 #ผลการทำงาน
 - เปลี่ยนทุกการprintในฟังก์ชันเป็นการคืนค่าแล้วprintออกมาครั้งเดียวแล้ว
 
