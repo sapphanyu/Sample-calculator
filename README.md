@@ -194,8 +194,10 @@ Docker --> Run app.py --> Access via Browser --> Same Flow as Web
 
 ## 7. รัน Test case ด้วย Docker
 
+```
 # 1. Build Docker image
 docker build -t test -f Dockerfile.test .
 
 # 2. Run tests inside container
 docker run test
+```
