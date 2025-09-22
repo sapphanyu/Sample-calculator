@@ -28,5 +28,17 @@
     "num2": 4.0,
     "operator": "*",
     "result": 28.0
+  },
+  {
+    "num1": 15.0,
+    "num2": 8.0,
+    "operator": "/",
+    "result": 1.875
+  },
+  {
+    "num1": 15.0,
+    "num2": 8.0,
+    "operator": "/",
+    "result": 1.875
   }
 ]

@@ -29,7 +29,7 @@
                 <div class="col"><button type="button" class="btn btn-secondary btn-lg w-100" onclick="appendToInput('9')">9</button></div>
             </div>
             <div class="row mb-2">
-                <div class="col"><button type="button" class="btn btn-info btn-lg w-100" onclick="appendToInput(' ')">Space</button></div>
+                <div class="col"><button type="button" class="btn btn-danger w-100" onclick="clearInput()">Clear</button></div>
                 <div class="col"><button type="button" class="btn btn-secondary btn-lg w-100" onclick="appendToInput('0')">0</button></div>
                 <div class="col"><button type="button" class="btn btn-warning btn-lg w-100" onclick="deleteLast()">Del</button></div>
             </div>
@@ -37,16 +37,13 @@
                 <div class="col"><button type="button" class="btn btn-warning w-100" onclick="appendToInput(' + ')">+</button></div>
                 <div class="col"><button type="button" class="btn btn-warning w-100" onclick="appendToInput(' - ')">-</button></div>
                 <div class="col"><button type="button" class="btn btn-warning w-100" onclick="appendToInput(' * ')">*</button></div>
-                <div class="col"><button type="button" class="btn btn-warning w-100" onclick="appendToInput(' / ')">/</button></div>
-                <div class="col"><button type="button" class="btn btn-warning w-100" onclick="appendToInput(' ** ')">**</button></div>
             </div>
             <div class="row mb-2">
-                <div class="col"><button type="button" class="btn btn-danger w-100" onclick="clearInput()">Clear</button></div>
+                <div class="col"><button type="button" class="btn btn-warning w-100" onclick="appendToInput(' / ')">/</button></div>
+                <div class="col"><button type="button" class="btn btn-warning w-100" onclick="appendToInput(' ** ')">**</button></div>
+                <div class="col"><button type="submit" class="btn btn-primary">คำนวณ</button></div>
             </div>
         </div>
-
-        <br>
-        <button type="submit" class="btn btn-primary">คำนวณ</button>
     </form>
 
     {% if result is not none %}
