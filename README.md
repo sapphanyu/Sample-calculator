@@ -77,22 +77,30 @@
 ```
 Sample-calculator/
 ├─ planning/
-│   ├─ flow.md
-│   ├─ planning_week 1.md
-│   ├─ planning_week 2.md
-│   ├─ planning_week 3.md
-│   ├─ planning_week 4.md
-│   ├─ READMEoid.md
-│   └─ วิธีการยิงapiเบื้องต้น.md
+│  ├─ flow.md
+│  ├─ planning_week 1.md
+│  ├─ planning_week 2.md
+│  ├─ planning_week 3.md
+│  ├─ planning_week 4.md
+│  ├─ READMEoid.md
+│  └─ วิธีการยิงapiเบื้องต้น.md
 ├─ src/
 │  ├─ templates/
 │  ├─ app.py
 │  ├─ main.py
 │  └─ history.json
 ├─ static/
-├─ Dockerfile
+├─ tests/                   # โค้ด test ของ pytest
+│  └─ test_app.py
+|  └─ test_main.py      
+├─ Dockerfile               # สำหรับรันแอปจริง
+├─ Dockerfile.test          # สำหรับรันทดสอบ
+├─ requirements.txt
+├─ .gitignore
 ├─ README.md
-└─ requirements.txt
+└─ .github/
+    └─ workflows/
+        └─ docker-test.yml
 ```
 
 ---
@@ -195,7 +203,7 @@ Docker --> Run app.py --> Access via Browser --> Same Flow as Web
 ## 7. รัน Test Case ด้วย Docker
 
 คุณสามารถใช้ Docker เพื่อรัน test ได้โดยไม่ต้องติดตั้ง Python หรือ library เพิ่มบนเครื่อง
-
+ เมื่อ
 ```
 # 1. สร้าง Docker image สำหรับการทดสอบ
 docker build -t calculator-test -f Dockerfile.test .
@@ -203,3 +211,6 @@ docker build -t calculator-test -f Dockerfile.test .
 # 2. รัน test ภายใน container
 docker run --rm calculator-test
 ```
+
+# ข้อควรระวัง
+หลังจากโหลดไฟล์ โปรดตรวจสอบไฟล์ requirements.txt เมื่อเกิดมีปัญหา
